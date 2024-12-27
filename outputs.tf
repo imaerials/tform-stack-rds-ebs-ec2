@@ -11,5 +11,5 @@ output "web_server_url" {
 }
 
 output "elastic_ip" {
-  value = aws_eip.elastic_ip.public_ip
+  value = "http://${aws_eip.elastic_ip.public_ip}"
 }
