@@ -5,11 +5,11 @@ variable "instance_type" {
 
 variable "ami_id" {
   description = "The AMI ID to use for the EC2 instance"
-  default     = "ami-005fc0f236362e99f"  # Update with a valid AMI ID for your region
+  default     = "ami-005fc0f236362e99f"  
 }
 variable "db_name" {
   description = "The name of the RDS database"
-  default     = "mydatabase"
+  default     = "cmsdb"
 }
 variable "db_username" {
   description = "The username for the RDS database"
@@ -21,6 +21,5 @@ variable "db_password" {
 }
 variable "efs_name" {
   description = "The name of the EFS file system"
-  default     = "my-cms-efs"
-  
+  default     = "cms-efs"
 }
