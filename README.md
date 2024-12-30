@@ -1,6 +1,6 @@
 # Terraform EC2 Web Stack
 
-This project provisions an EC2 instance to be used as a web server using Terraform. An RDS instance also is provided
+This project provisions an EC2 instance an EFS storage and a RDS database for a web stack
 
 ## Init
 ```
@@ -10,11 +10,19 @@ docker compose -f docker-compose.yml run --rm terraform init
 ```
 docker compose -f docker-compose.yml run --rm terraform plan
 ``` 
-## Deply
+## Deploy
 ```
 docker compose -f docker-compose.yml run --rm terraform apply
 ``` 
 
+``` 
+docker compose -f docker-compose.yml run --rm terraform apply -auto-approve
+``` 
+
+## Terraform Console
+``` 
+docker compose -f docker-compose.yml run --rm terraform console
+``` 
 
 ## Output
 ```
@@ -23,4 +31,4 @@ docker compose -f docker-compose.yml run --rm terraform output -json
 
 ## Environments
 
-Create a .ENV file in root folder
+Create a .env file in root folder
