@@ -1,6 +1,6 @@
 # Terraform EC2 Web Stack
 
-This project provisions an EC2 instance to be used as a web server using Terraform. An RDS instance also is provided
+This project provisions an EC2 instance an EFS storage and a RDS database for a web stack
 
 ## Init
 ```

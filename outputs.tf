@@ -1,23 +1,30 @@
 output "instance_id" {
-  value = aws_instance.web_server.id
+  value = module.ec2.instance_id
 }
 
 output "public_ip" {
-  value = aws_instance.web_server.public_ip
+  value = module.ec2.public_ip
 }
 
 output "web_server_url" {
-  value = "http://${aws_instance.web_server.public_ip}"
+  value = module.ec2.web_server_url
 }
 
 output "elastic_ip" {
-  value = "http://${aws_eip.elastic_ip.public_ip}"
+  value = module.ec2.elastic_ip
 }
+
 output "efs_dns_name" {
-  value = aws_efs_file_system.efs.dns_name
-  
+  value = module.efs.efs_dns_name
 }
+
 output "efs_mount_target_dns_name" {
-  value = aws_efs_mount_target.efs_mount_target[0].dns_name
-  
+  value = module.efs.efs_mount_target_dns_name
+}
+output "subnet_id" {
+  value = module.ec2.subnet_id
+}
+
+output "security_group_id" {
+  value = module.ec2.security_group_id
 }
