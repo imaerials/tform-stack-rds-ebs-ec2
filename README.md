@@ -4,41 +4,38 @@ This project provisions an EC2 instance an EFS storage and a RDS database for a 
 
 ## Init
 ```
-docker compose -f docker-compose.yml run --rm terraform init
+docker compose run --rm workspace terraform init
 ``` 
 ## Plan
 ```
-docker compose -f docker-compose.yml run --rm terraform plan
+docker compose run --rm workspace --rm terraform plan
 ``` 
 ## Deploy
 ```
-docker compose -f docker-compose.yml run --rm terraform apply
+docker compose run --rm workspace terraform apply
 ``` 
-
+## Deploy with auto approve
 ``` 
-docker compose -f docker-compose.yml run --rm terraform apply -auto-approve
+docker compose run --rm workspace terraform apply -auto-approve
 ``` 
 
 ## Terraform Console
 ``` 
-docker compose -f docker-compose.yml run --rm terraform console
+docker compose run --rm workspace terraform console
 ``` 
 
 ## Output
 ```
-docker compose -f docker-compose.yml run --rm terraform output -json
+docker compose run --rm workspace terraform output -json
 ``` 
 
-## Environments
 
-Create a .env file in root folder
-
-# DevOps Workspace
-
-``` 
-docker compose run --rm workspace terraform  plan
-```
+# Ansible
 
 ``` 
 docker compose run --rm workspace ansible-playbook /workspace/test.yml
 ``` 
+
+# Environments
+
+Create a .env file in root folder
