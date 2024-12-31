@@ -1,9 +1,9 @@
 services:
-  terraform:
-    image: hashicorp/terraform
+  workspace:
+    build: .
     volumes:
-      - .:/terraform
-    working_dir: /terraform
+      - .:/workspace
+    working_dir: /workspace
     network_mode: host
     env_file:
       - .env

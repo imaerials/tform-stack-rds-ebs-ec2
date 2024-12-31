@@ -65,11 +65,6 @@ resource "aws_instance" "web_server" {
   instance_type = var.instance_type
   key_name      = aws_key_pair.deployer.key_name
   security_groups = [aws_security_group.web_sg.name]
- user_data = templatefile("${path.module}/web-server-install.sh", {
-    sitename = "ghost-cms"
-    efs_dns_name = var.efs_dns_name
-    node_version = var.node_version
-  })
   tags = {
     Name = "GhostCms"
   }
