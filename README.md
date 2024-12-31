@@ -36,5 +36,9 @@ Create a .env file in root folder
 # DevOps Workspace
 
 ``` 
-docker-compose run workspace ansible-playbook /workspace/test.yml
+docker compose run --rm workspace terraform  plan
+```
+
+``` 
+docker compose run --rm workspace ansible-playbook /workspace/test.yml
 ``` 
