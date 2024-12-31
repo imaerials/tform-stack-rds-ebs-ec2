@@ -32,3 +32,9 @@ docker compose -f docker-compose.yml run --rm terraform output -json
 ## Environments
 
 Create a .env file in root folder
+
+# DevOps Workspace
+
+``` 
+docker-compose run workspace ansible-playbook /workspace/test.yml
+``` 
