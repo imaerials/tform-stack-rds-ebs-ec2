@@ -10,14 +10,14 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "tls_private_key" "example" {
+resource "tls_private_key" "tls-access-key" {
   algorithm = "RSA"
   rsa_bits  = 4096
 }
 
 resource "aws_key_pair" "deployer" {
   key_name   = "deployer-key"
-  public_key = tls_private_key.example.public_key_openssh
+  public_key = tls_private_key.tls-access-key.public_key_openssh
 }
 resource "aws_eip" "elastic_ip" {
   instance = aws_instance.web_server.id
@@ -71,6 +71,6 @@ resource "aws_instance" "web_server" {
 }
 
 output "private_key" {
-  value     = tls_private_key.example.private_key_pem
+  value     = tls_private_key.tls-access-key.private_key_pem
   sensitive = true
 }
