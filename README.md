@@ -8,7 +8,7 @@ docker compose run --rm workspace terraform init
 ``` 
 ## Plan
 ```
-docker compose run --rm workspace --rm terraform plan
+docker compose run --rm workspace terraform plan
 ``` 
 ## Deploy
 ```
