@@ -18,6 +18,10 @@ docker compose run --rm workspace terraform apply
 ``` 
 docker compose run --rm workspace terraform apply -auto-approve
 ``` 
+## Targeted resource creation
+``` 
+docker compose run --rm workspace terraform destroy -target=module.vpc
+``` 
 
 ## Terraform Console
 ``` 
