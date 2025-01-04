@@ -20,7 +20,7 @@ variable "db_username" {
 
 variable "db_password" {
   description = "The password for the RDS database"
-  default     = "password"  # Update with a secure password
+  default     = "password" # Update with a secure password
 }
 
 variable "efs_name" {
