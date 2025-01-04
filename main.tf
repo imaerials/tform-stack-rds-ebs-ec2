@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
       version = "5.82.2"
     }
   }
@@ -20,9 +20,9 @@ module "ec2" {
 }
 
 module "efs" {
-  source            = "./modules/efs"
-  efs_name          = var.efs_name
-  subnet_id         = module.ec2.subnet_id
+  source                = "./modules/efs"
+  efs_name              = var.efs_name
+  subnet_id             = module.ec2.subnet_id
   ec2_security_group_id = module.ec2.security_group_id
 }
 
@@ -31,4 +31,8 @@ module "rds" {
   db_name     = var.db_name
   db_username = var.db_username
   db_password = var.db_password
+}
+module "vpc" {
+  source   = "./modules/vpc"
+  vpc_name = var.vpc_name
 }

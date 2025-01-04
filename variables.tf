@@ -20,7 +20,7 @@ variable "db_username" {
 
 variable "db_password" {
   description = "The password for the RDS database"
-  default     = "password"  # Update with a secure password
+  default     = "password" # Update with a secure password
 }
 
 variable "efs_name" {
@@ -31,4 +31,13 @@ variable "efs_name" {
 variable "node_version" {
   description = "The version of Node.js to install"
   default     = "20"
+}
+variable "aws_region" {
+  description = "The AWS region to deploy to"
+  default     = "us-east-1"
+}
+variable "vpc_name" {
+  description = "The name of the VPC"
+  default     = "cms-vpc"
+
 }
