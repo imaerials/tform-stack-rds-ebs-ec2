@@ -16,3 +16,9 @@ variable "node_version" {
   description = "The version of Node.js to install"
   default     = "20"
 }
+variable "subnet_id" {
+  description = "The subnet ID for the EC2 instance"
+}
+variable "vpc_id" {
+  description = "The VPC ID for the security group"
+}

@@ -17,8 +17,9 @@ module "ec2" {
   ami_id        = var.ami_id
   efs_dns_name  = module.efs.efs_dns_name
   node_version  = var.node_version
+  subnet_id     = module.vpc.vpc_public_subnet_id
+  vpc_id        = module.vpc.vpc_id
 }
-
 module "efs" {
   source                = "./modules/efs"
   efs_name              = var.efs_name
