@@ -30,6 +30,7 @@ resource "aws_eip_association" "main" {
 resource "aws_security_group" "web_sg" {
   name        = "web_sg"
   description = "Allow HTTP, HTTPS, and SSH access"
+  vpc_id      = var.vpc_id
 
   ingress {
     from_port   = 80
@@ -59,17 +60,16 @@ resource "aws_security_group" "web_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
 resource "aws_instance" "web_server" {
   ami           = var.ami_id
   instance_type = var.instance_type
   key_name      = aws_key_pair.deployer.key_name
-  security_groups = [aws_security_group.web_sg.name]
+  subnet_id     = var.subnet_id
+  vpc_security_group_ids = [aws_security_group.web_sg.id]
   tags = {
     Name = "GhostCms"
   }
 }
-
 output "private_key" {
   value     = tls_private_key.tls-access-key.private_key_pem
   sensitive = true

@@ -32,3 +32,17 @@ variable "node_version" {
   description = "The version of Node.js to install"
   default     = "20"
 }
+variable "aws_region" {
+  description = "The AWS region to deploy to"
+  default     = "us-east-1"
+}
+variable "vpc_name" {
+  description = "The name of the VPC"
+  default     = "cms-vpc"
+
+}
+variable "environment_name" {
+  description = "The name of the environment (e.g., dev, staging, prod)"
+  type        = string
+  default = "dev"
+}

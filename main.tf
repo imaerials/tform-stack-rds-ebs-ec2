@@ -17,13 +17,15 @@ module "ec2" {
   ami_id        = var.ami_id
   efs_dns_name  = module.efs.efs_dns_name
   node_version  = var.node_version
+  subnet_id     = module.vpc.vpc_public_subnet_id
+  vpc_id        = module.vpc.vpc_id
 }
-
 module "efs" {
   source                = "./modules/efs"
   efs_name              = var.efs_name
   subnet_id             = module.ec2.subnet_id
   ec2_security_group_id = module.ec2.security_group_id
+  vpc_id                = module.vpc.vpc_id
 }
 
 module "rds" {
@@ -31,4 +33,11 @@ module "rds" {
   db_name     = var.db_name
   db_username = var.db_username
   db_password = var.db_password
+  subnet_ids  = module.vpc.private_subnet_ids 
+  vpc_id      = module.vpc.vpc_id
+  environment_name = var.environment_name
+}
+module "vpc" {
+  source   = "./modules/vpc"
+  vpc_name = var.vpc_name
 }

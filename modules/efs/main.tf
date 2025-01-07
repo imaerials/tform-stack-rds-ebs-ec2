@@ -1,7 +1,7 @@
 resource "aws_security_group" "efs_sg" {
   name        = "efs_sg"
   description = "Allow access to EFS from EC2 instance"
-
+  vpc_id      = var.vpc_id
   ingress {
     from_port   = 2049
     to_port     = 2049

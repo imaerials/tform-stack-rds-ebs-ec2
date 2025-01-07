@@ -10,3 +10,6 @@ variable "subnet_id" {
 variable "ec2_security_group_id" {
   description = "The security group ID of the EC2 instance"
 }
+variable "vpc_id" {
+  description = "The VPC ID for the security group"
+}

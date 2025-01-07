@@ -1,4 +1,11 @@
+resource "aws_db_subnet_group" "rds_subnet_group" {
+  name        = "rds-subnet-group"
+  description = "RDS subnet group"
+  subnet_ids  = var.subnet_ids
+}
+
 resource "aws_db_instance" "default" {
+  identifier           = "${var.environment_name}-${var.db_name}"
   allocated_storage    = 20
   db_name              = var.db_name
   engine               = "mysql"
@@ -10,11 +17,16 @@ resource "aws_db_instance" "default" {
   skip_final_snapshot  = true
   publicly_accessible  = false
   vpc_security_group_ids = [aws_security_group.db_sg.id]
+  db_subnet_group_name = aws_db_subnet_group.rds_subnet_group.name
+   tags = {
+    Name = "${var.environment_name}-${var.db_name}"
+  }
 }
 
 resource "aws_security_group" "db_sg" {
   name        = "db_sg"
   description = "Allow MySQL access"
+  vpc_id      = var.vpc_id
 
   ingress {
     from_port   = 3306

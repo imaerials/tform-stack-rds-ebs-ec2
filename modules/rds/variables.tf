@@ -10,5 +10,21 @@ variable "db_username" {
 
 variable "db_password" {
   description = "The password for the RDS database"
-  default     = "password"  # Update with a secure password
+  default     = "password"  
+}
+variable "multi_az" {
+  default     = false
+  description = "Muti-az allowed?"
+}
+variable "subnet_ids" {
+  type        = list
+  description = "Subnet ids"
+}
+variable "vpc_id" {
+  description = "The ID of the VPC"
+  type        = string
+}
+variable "environment_name" {
+  description = "The name of the environment (e.g., dev, staging, prod)"
+  type        = string
 }
