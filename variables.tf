@@ -41,3 +41,8 @@ variable "vpc_name" {
   default     = "cms-vpc"
 
 }
+variable "environment_name" {
+  description = "The name of the environment (e.g., dev, staging, prod)"
+  type        = string
+  default = "dev"
+}

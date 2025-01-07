@@ -1,11 +1,20 @@
 # Terraform EC2 Web Stack
 
-This project provisions an EC2 instance an EFS storage and a RDS database for a web stack
+This project provisions an EC2 instance, EFS storage, and an RDS database for a web stack using Terraform. It sets up the necessary infrastructure to deploy a web server, attach EFS for storage, and configure an RDS database for data persistence.
 
-## Init
-```
+## Features
+- Provision an EC2 instance with a specified AMI and instance type.
+- Set up EFS for scalable storage.
+- Configure an RDS database for data management.
+- Create a VPC with public and private subnets.
+- Automatically configure security groups and networking.
+
+## Usage
+
+### Initialize Terraform
+```sh
 docker compose run --rm workspace terraform init
-``` 
+```
 ## Plan
 ```
 docker compose run --rm workspace terraform plan

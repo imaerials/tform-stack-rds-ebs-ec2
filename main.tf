@@ -33,6 +33,9 @@ module "rds" {
   db_name     = var.db_name
   db_username = var.db_username
   db_password = var.db_password
+  subnet_ids  = module.vpc.private_subnet_ids 
+  vpc_id      = module.vpc.vpc_id
+  environment_name = var.environment_name
 }
 module "vpc" {
   source   = "./modules/vpc"

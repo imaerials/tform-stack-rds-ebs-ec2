@@ -22,27 +22,25 @@ resource "aws_vpc" "main" {
 }
 
 resource "aws_subnet" "public_subnet" {
+  count                   = length(var.public_subnet_cidr_blocks)
   vpc_id                  = aws_vpc.main.id
   cidr_block              = var.public_subnet_cidr_blocks[count.index]
-  count                  = var.subnet_count.public
-  availability_zone = data.aws_availability_zones.available.names[count.index + 1]  // Use a different AZ
-  
+  availability_zone       = data.aws_availability_zones.available.names[count.index % length(data.aws_availability_zones.available.names)]
+
   tags = {
-    "Name" = "${var.vpc_name}-public-${count.index}"
+    Name = "${var.vpc_name}-public-${count.index}"
   }
 }
-
 resource "aws_subnet" "private_subnet" {
-  vpc_id      = aws_vpc.main.id
-  cidr_block  = var.private_subnet_cidr_blocks[count.index] 
-  count                  = var.subnet_count.private
-availability_zone = "us-east-1a"
-  
+  count                   = length(var.private_subnet_cidr_blocks)
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = var.private_subnet_cidr_blocks[count.index]
+  availability_zone       = data.aws_availability_zones.available.names[count.index % length(data.aws_availability_zones.available.names)]
+
   tags = {
-    "Name" = "${var.vpc_name}-private-${count.index}"
+    Name = "${var.vpc_name}-private-${count.index}"
   }
 }
-
 resource "aws_route_table" "public_rt" {
   vpc_id = aws_vpc.main.id
 
