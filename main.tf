@@ -25,6 +25,7 @@ module "efs" {
   efs_name              = var.efs_name
   subnet_id             = module.ec2.subnet_id
   ec2_security_group_id = module.ec2.security_group_id
+  vpc_id = module.vpc.vpc_id
 }
 
 module "rds" {
