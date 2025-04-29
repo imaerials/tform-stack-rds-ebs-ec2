@@ -52,3 +52,8 @@ docker compose run --rm workspace ansible-playbook /workspace/test.yml
 # Environments
 
 Create a .env file in root folder
+
+```
+AWS_ACCESS_KEY_ID = YourAccessKeyID
+AWS_SECRET_ACCESS_KEY = yourSecretAccessKey
+```
